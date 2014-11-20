@@ -1,0 +1,23 @@
+<ul>
+	<li ng-show="!listing.castellersList.length">No castellers to select</li>
+	<li ng-repeat="casteller in listing.castellersList"><b>{{ casteller.full_name }}</b>({{ casteller.nickname }})<span class="glyphicon glyphicon-remove pull-right" ng-click="listing.deleteCasteller(casteller.id)"></span></li>
+
+	<form name="newCastellerForm" ng-controller="CreateCastellerController as createCastellerCtrl"
+		ng-submit="createCastellerCtrl.addCasteller(listing)">
+      <!--  Live Preview -->
+	  <li ng-show="createCastellerCtrl.casteller.full_name">{{ createCastellerCtrl.casteller.full_name }}({{ createCastellerCtrl.casteller.nickname }})</li>
+
+      <!--  Review Form -->
+      <h4>Add a Casteller</h4>
+      <fieldset class="form-group">
+        <input ng-change="createCastellerCtrl.calculateNickName()" ng-model="createCastellerCtrl.casteller.full_name" type="text" class="form-control" placeholder="Full name" title="Full name"></input>
+      </fieldset>
+      <fieldset ng-class="{'has-error': createCastellerCtrl.nicknameDuplicated()}" class="form-group">
+        <input ng-model="createCastellerCtrl.casteller.nickname" type="text" class="form-control" placeholder="Nickname" title="Nickname"></input>
+        <span ng-show="createCastellerCtrl.nicknameDuplicated()" id="helpBlock" class="text-danger">Nickname should be unique</span>
+      </fieldset>
+      <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="New Casteller" />
+      </fieldset>
+    </form>
+</ul>

@@ -1,0 +1,21 @@
+{
+  "name": "casteller-manager",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A casteller manager",
+  "repository": "https://github.com/alexgt9/casteller-manager",
+  "license": "MIT",
+  "devDependencies": {
+    "bower": "^1.3.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+
+    "prestart": "npm install",
+    "start": "http-server -a localhost -p 8000 -c-1",
+
+    "pretest": "npm install",
+
+    "preupdate-webdriver": "npm install"
+  }
+}
